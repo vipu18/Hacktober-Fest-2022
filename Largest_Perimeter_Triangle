@@ -1,0 +1,24 @@
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var largestPerimeter = function(nums) {
+  for(var i=0;i<nums.length;i++)
+      {
+          for(var j=0;j<nums.length-i-1;j++)
+              {
+                  if(nums[j]>nums[j+1])
+                      {
+                          var temp=nums[j];
+                          nums[j]=nums[j+1];
+                          nums[j+1]=temp;
+                      }
+              }
+      }
+    // sufficient condition for these lengths to form a triangle of non-zero area is a + b > ca+b>c.
+    
+          for (var i = nums.length - 3; i >= 0; --i)
+            if (nums[i] + nums[i+1] > nums[i+2])
+                return nums[i] + nums[i+1] + nums[i+2];
+        return 0;
+};
