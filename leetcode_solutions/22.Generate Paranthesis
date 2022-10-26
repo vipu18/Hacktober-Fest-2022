@@ -1,0 +1,22 @@
+class Solution {
+public:
+   void f(vector<string> &ans,int n,string s,int i,int j){
+    if(s.size()==n*2){
+        ans.push_back(s);
+        return ;
+    }
+    if(i<n){
+         f(ans,n,s+"(",i+1,j);
+    }
+    if(i>j) {
+         f(ans,n, s+")", i, j + 1);
+    }
+    return;
+}
+
+vector<string> generateParenthesis(int n) {
+    vector<string> par;
+    f(par,n,"",0,0);
+    return par;
+}
+};
